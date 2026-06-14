@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AgroSL – Farmer Advisory Portal | Sierra Leone</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* ── TOKENS ── */
+    :root {
+      --green-deep:   #1B4332;
+      --green-mid:    #2D6A4F;
+      --green-light:  #52B788;
+      --soil:         #8B5E3C;
+      --gold:         #D4A017;
+      --cream:        #F9F5EC;
+      --cream-dark:   #EDE8DC;
+      --charcoal:     #1C1C1C;
+      --muted:        #5A5A5A;
+      --white:        #FFFFFF;
+      --radius:       10px;
+      --shadow:       0 4px 24px rgba(27,67,50,0.10);
+    }
+
+    /* ── RESET ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--cream);
+      color: var(--charcoal);
+      line-height: 1.7;
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+      background: var(--green-deep);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5%;
+      height: 64px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.25);
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      color: var(--gold);
+      font-weight: 900;
+      letter-spacing: 0.5px;
+    }
+    .nav-logo span { color: var(--white); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: var(--cream);
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-cta {
+      background: var(--gold);
+      color: var(--green-deep) !important;
+      padding: 0.45rem 1.1rem;
+      border-radius: 20px;
+      font-weight: 600 !important;
+    }
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px;
+    }
+    .hamburger span { width: 24px; height: 2px; background: var(--cream); display: block; transition: all 0.3s; }
+    .mobile-menu {
+      display: none; flex-direction: column;
+      background: var(--green-deep);
+      position: fixed; top: 64px; left: 0; right: 0; z-index: 998;
+      padding: 1.5rem 5%;
+      gap: 1.2rem;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { color: var(--cream); font-size: 1rem; font-weight: 500; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--green-deep) 0%, var(--green-mid) 60%, #40916C 100%);
+      display: flex; align-items: center;
+      padding: 100px 5% 60px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .hero-content { max-width: 640px; position: relative; z-index: 1; }
+    .hero-eyebrow {
+      display: inline-block;
+      background: rgba(212,160,23,0.18);
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 0.3rem 0.9rem;
+      border-radius: 20px;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      color: var(--white);
+      line-height: 1.15;
+      margin-bottom: 1.25rem;
+    }
+    .hero h1 em { color: var(--gold); font-style: normal; }
+    .hero p {
+      color: rgba(255,255,255,0.80);
+      font-size: 1.05rem;
+      max-width: 520px;
+      margin-bottom: 2.2rem;
+    }
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--gold);
+      color: var(--green-deep);
+      padding: 0.8rem 1.8rem;
+      border-radius: 30px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+      border: none; cursor: pointer;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(212,160,23,0.4); }
+    .btn-outline {
+      border: 2px solid rgba(255,255,255,0.5);
+      color: var(--white);
+      padding: 0.8rem 1.8rem;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: border-color 0.2s, background 0.2s;
+      background: transparent; cursor: pointer;
+    }
+    .btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.08); }
+    .hero-stats {
+      display: flex; gap: 2.5rem; margin-top: 3.5rem; flex-wrap: wrap;
+    }
+    .stat-item { color: var(--cream); }
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem; font-weight: 900;
+      color: var(--gold);
+      display: block;
+    }
+    .stat-label { font-size: 0.78rem; opacity: 0.7; text-transform: uppercase; letter-spacing: 1px; }
+
+    /* ── TODAY'S ADVISORY (Signature Feature) ── */
+    .advisory-strip {
+      background: var(--green-deep);
+      padding: 2.5rem 5%;
+    }
+    .advisory-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: auto 1fr auto;
+      align-items: center; gap: 2rem;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(212,160,23,0.3);
+      border-radius: var(--radius);
+      padding: 1.6rem 2rem;
+    }
+    .advisory-label {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--gold);
+      writing-mode: vertical-rl; transform: rotate(180deg);
+    }
+    .advisory-text {
+      color: var(--white);
+    }
+    .advisory-text h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem; margin-bottom: 0.3rem; color: var(--gold);
+    }
+    .advisory-text p { font-size: 0.95rem; opacity: 0.85; }
+    .advisory-nav { display: flex; flex-direction: column; gap: 0.5rem; }
+    .adv-btn {
+      background: rgba(212,160,23,0.15);
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      width: 36px; height: 36px;
+      border-radius: 50%; cursor: pointer;
+      font-size: 1rem; display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s;
+    }
+    .adv-btn:hover { background: var(--gold); color: var(--green-deep); }
+
+    /* ── SECTIONS COMMON ── */
+    section { padding: 80px 5%; }
+    .section-label {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 2.5px;
+      text-transform: uppercase; color: var(--green-mid);
+      margin-bottom: 0.6rem;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      color: var(--green-deep);
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    .section-sub {
+      color: var(--muted); font-size: 1rem; max-width: 560px; margin-bottom: 3rem;
+    }
+    .max-w { max-width: 1100px; margin: 0 auto; }
+
+    /* ── CROPS / ADVISORY CARDS ── */
+    #advisory { background: var(--cream); }
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+    .card {
+      background: var(--white);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .card:hover { transform: translateY(-4px); box-shadow: 0 10px 32px rgba(27,67,50,0.14); }
+    .card-img {
+      height: 170px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 4rem;
+    }
+    .card-body { padding: 1.2rem 1.4rem 1.6rem; }
+    .card-tag {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; color: var(--green-mid);
+      margin-bottom: 0.4rem; display: block;
+    }
+    .card-body h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem; color: var(--green-deep); margin-bottom: 0.6rem;
+    }
+    .card-body p { font-size: 0.88rem; color: var(--muted); line-height: 1.6; }
+
+    /* ── WEATHER ── */
+    #weather { background: var(--cream-dark); }
+    .weather-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;
+    }
+    .weather-main {
+      background: linear-gradient(135deg, var(--green-deep), var(--green-mid));
+      border-radius: var(--radius);
+      padding: 2.5rem;
+      color: var(--white);
+    }
+    .weather-main .location {
+      font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase;
+      opacity: 0.7; margin-bottom: 0.8rem;
+    }
+    .weather-main .temp {
+      font-family: 'Playfair Display', serif;
+      font-size: 4rem; font-weight: 900; color: var(--gold);
+      line-height: 1;
+    }
+    .weather-main .condition { font-size: 1rem; opacity: 0.8; margin-top: 0.3rem; }
+    .weather-details {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; margin-top: 1.5rem;
+    }
+    .w-detail {
+      background: rgba(255,255,255,0.08);
+      border-radius: 6px; padding: 0.7rem;
+      font-size: 0.82rem;
+    }
+    .w-detail strong { display: block; font-size: 1rem; color: var(--gold); }
+    .forecast-list { display: flex; flex-direction: column; gap: 0.9rem; }
+    .forecast-item {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 0.9rem 1.2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      box-shadow: var(--shadow);
+    }
+    .fc-day { font-size: 0.85rem; font-weight: 600; color: var(--green-deep); }
+    .fc-icon { font-size: 1.4rem; }
+    .fc-temp { font-size: 0.85rem; font-weight: 600; color: var(--soil); }
+    .fc-advice { font-size: 0.75rem; color: var(--muted); }
+
+    /* ── MARKET PRICES ── */
+    #market { background: var(--cream); }
+    .market-table-wrap { overflow-x: auto; border-radius: var(--radius); box-shadow: var(--shadow); }
+    table {
+      width: 100%; border-collapse: collapse;
+      background: var(--white); min-width: 560px;
+    }
+    thead { background: var(--green-deep); }
+    th {
+      padding: 1rem 1.2rem; text-align: left;
+      color: var(--gold); font-size: 0.78rem;
+      font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+    }
+    td { padding: 0.9rem 1.2rem; border-bottom: 1px solid var(--cream-dark); font-size: 0.9rem; }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: var(--cream); }
+    .price-up { color: #2D6A4F; font-weight: 600; }
+    .price-down { color: #C0392B; font-weight: 600; }
+    .badge {
+      display: inline-block; font-size: 0.7rem; font-weight: 700;
+      padding: 0.2rem 0.55rem; border-radius: 20px; letter-spacing: 0.5px;
+    }
+    .badge-up { background: #D4EDDA; color: #155724; }
+    .badge-down { background: #F8D7DA; color: #721C24; }
+
+    /* ── TIPS SECTION ── */
+    #tips { background: var(--green-deep); }
+    #tips .section-label { color: var(--gold); opacity: 0.7; }
+    #tips .section-title { color: var(--white); }
+    #tips .section-sub { color: rgba(255,255,255,0.65); }
+    .tips-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem;
+    }
+    .tip-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(212,160,23,0.2);
+      border-radius: var(--radius);
+      padding: 1.8rem 1.4rem;
+      transition: background 0.2s;
+    }
+    .tip-card:hover { background: rgba(255,255,255,0.1); }
+    .tip-icon { font-size: 2.2rem; margin-bottom: 1rem; }
+    .tip-card h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem; color: var(--gold); margin-bottom: 0.5rem;
+    }
+    .tip-card p { font-size: 0.85rem; color: rgba(255,255,255,0.70); line-height: 1.6; }
+
+    /* ── REGISTER FORM ── */
+    #register { background: var(--cream-dark); }
+    .form-wrap {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start;
+    }
+    .form-info h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem; color: var(--green-deep); margin-bottom: 1rem;
+    }
+    .form-info p { color: var(--muted); font-size: 0.95rem; margin-bottom: 1.5rem; }
+    .benefit-list { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+    .benefit-list li {
+      display: flex; gap: 0.7rem; align-items: flex-start;
+      font-size: 0.9rem; color: var(--charcoal);
+    }
+    .benefit-list li::before {
+      content: '✓'; color: var(--green-mid); font-weight: 700; font-size: 1rem; flex-shrink: 0;
+    }
+    form {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 2.2rem;
+      box-shadow: var(--shadow);
+      display: flex; flex-direction: column; gap: 1.1rem;
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .field { display: flex; flex-direction: column; gap: 0.35rem; }
+    label { font-size: 0.82rem; font-weight: 600; color: var(--green-deep); }
+    input, select, textarea {
+      padding: 0.7rem 0.9rem;
+      border: 1.5px solid var(--cream-dark);
+      border-radius: 6px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      background: var(--cream);
+      color: var(--charcoal);
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+    }
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--green-mid);
+      box-shadow: 0 0 0 3px rgba(45,106,79,0.1);
+      background: var(--white);
+    }
+    textarea { resize: vertical; min-height: 90px; }
+    .submit-btn {
+      background: var(--green-deep);
+      color: var(--white);
+      border: none; border-radius: 30px;
+      padding: 0.9rem;
+      font-size: 0.95rem; font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+      letter-spacing: 0.5px;
+    }
+    .submit-btn:hover { background: var(--green-mid); transform: translateY(-1px); }
+    .form-success {
+      display: none;
+      background: #D4EDDA; border-radius: var(--radius);
+      padding: 1.2rem; text-align: center;
+      color: #155724; font-weight: 600; font-size: 0.95rem;
+    }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--cream); }
+    .contact-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start;
+    }
+    .contact-info h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem; color: var(--green-deep); margin-bottom: 1.5rem;
+    }
+    .contact-item {
+      display: flex; gap: 1rem; align-items: flex-start; margin-bottom: 1.2rem;
+    }
+    .contact-icon {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: var(--green-deep); color: var(--gold);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; flex-shrink: 0;
+    }
+    .contact-detail strong { display: block; font-size: 0.85rem; color: var(--green-deep); margin-bottom: 0.15rem; }
+    .contact-detail span { font-size: 0.88rem; color: var(--muted); }
+    .contact-form {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 2rem;
+      box-shadow: var(--shadow);
+      display: flex; flex-direction: column; gap: 1rem;
+    }
+    .contact-form h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem; color: var(--green-deep); margin-bottom: 0.5rem;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--charcoal);
+      padding: 3rem 5% 2rem;
+    }
+    .footer-grid {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 2.5rem; max-width: 1100px; margin: 0 auto 2.5rem;
+    }
+    .footer-brand .nav-logo { font-size: 1.5rem; margin-bottom: 0.8rem; }
+    .footer-brand p { font-size: 0.85rem; color: rgba(255,255,255,0.5); line-height: 1.7; }
+    .footer-col h5 {
+      font-size: 0.78rem; font-weight: 700; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 1rem;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+    .footer-col ul li a { font-size: 0.85rem; color: rgba(255,255,255,0.55); transition: color 0.2s; }
+    .footer-col ul li a:hover { color: var(--gold); }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 1.5rem; max-width: 1100px; margin: 0 auto;
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
+    }
+    .footer-bottom p { font-size: 0.8rem; color: rgba(255,255,255,0.4); }
+    .dpg-badge {
+      font-size: 0.72rem; color: var(--gold);
+      border: 1px solid rgba(212,160,23,0.3);
+      padding: 0.25rem 0.7rem; border-radius: 20px;
+    }
+
+    /* ── SCROLL-REVEAL ── */
+    .reveal {
+      opacity: 0; transform: translateY(28px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .weather-grid { grid-template-columns: 1fr; }
+      .form-wrap { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .advisory-inner { grid-template-columns: 1fr; }
+      .advisory-label { writing-mode: horizontal-tb; transform: none; }
+    }
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 2rem; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .hero-stats { gap: 1.5rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; }
+      * { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">Agro<span>SL</span></div>
+    <ul class="nav-links">
+      <li><a href="#advisory">Advisory</a></li>
+      <li><a href="#weather">Weather</a></li>
+      <li><a href="#market">Market</a></li>
+      <li><a href="#tips">Tips</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#register" class="nav-cta">Join Free</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#advisory" onclick="closeMobile()">Advisory</a>
+    <a href="#weather" onclick="closeMobile()">Weather</a>
+    <a href="#market" onclick="closeMobile()">Market</a>
+    <a href="#tips" onclick="closeMobile()">Tips</a>
+    <a href="#register" onclick="closeMobile()">Register Free</a>
+    <a href="#contact" onclick="closeMobile()">Contact</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <span class="hero-eyebrow">🌿 Sierra Leone Farmer Portal</span>
+      <h1>Grow <em>Smarter,</em><br>Harvest Better</h1>
+      <p>Real-time crop advisories, local weather alerts, and live market prices — built for Sierra Leonean farmers, in every district.</p>
+      <div class="hero-btns">
+        <a href="#advisory" class="btn-primary">View Today's Advisory</a>
+        <a href="#register" class="btn-outline">Register as Farmer</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <span class="stat-num">12,400+</span>
+          <span class="stat-label">Registered Farmers</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">14</span>
+          <span class="stat-label">Districts Covered</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">6</span>
+          <span class="stat-label">Key Crops Tracked</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TODAY'S ADVISORY (Signature Feature) -->
+  <div class="advisory-strip">
+    <div class="advisory-inner">
+      <div class="advisory-label">Today's Advisory</div>
+      <div class="advisory-text">
+        <h3 id="adv-title">Loading advisory…</h3>
+        <p id="adv-body">Please wait.</p>
+      </div>
+      <div class="advisory-nav">
+        <button class="adv-btn" onclick="prevAdvisory()" aria-label="Previous">&#8593;</button>
+        <button class="adv-btn" onclick="nextAdvisory()" aria-label="Next">&#8595;</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CROP ADVISORY CARDS -->
+  <section id="advisory">
+    <div class="max-w">
+      <p class="section-label">Crop Guidance</p>
+      <h2 class="section-title">Seasonal Crop Advisories</h2>
+      <p class="section-sub">Expert guidance tailored to Sierra Leone's agricultural seasons — from planting to harvest.</p>
+      <div class="cards-grid">
+        <div class="card reveal">
+          <div class="card-img" style="background:#E8F5E9;">🌾</div>
+          <div class="card-body">
+            <span class="card-tag">Rice — Current Season</span>
+            <h3>Preparing Your Paddy Fields</h3>
+            <p>With early rains arriving in the Northern Province, begin field preparation now. Apply organic compost before first ploughing. Watch for blast fungus in low-lying areas.</p>
+          </div>
+        </div>
+        <div class="card reveal">
+          <div class="card-img" style="background:#FFF8E1;">🥜</div>
+          <div class="card-body">
+            <span class="card-tag">Groundnut — Planting Alert</span>
+            <h3>Optimal Planting Window Open</h3>
+            <p>Soil moisture levels in the Eastern Province are ideal for groundnut planting this week. Space rows at 45cm for maximum yield. Avoid waterlogged plots near river banks.</p>
+          </div>
+        </div>
+        <div class="card reveal">
+          <div class="card-img" style="background:#FCE4EC;">🍠</div>
+          <div class="card-body">
+            <span class="card-tag">Cassava — Pest Watch</span>
+            <h3>Mealybug Alert in Southern Districts</h3>
+            <p>Reports of cassava mealybug in Pujehun and Bonthe districts. Apply neem-based spray early morning. Contact your district extension officer for free pesticide allocation.</p>
+          </div>
+        </div>
+        <div class="card reveal">
+          <div class="card-img" style="background:#E3F2FD;">🌽</div>
+          <div class="card-body">
+            <span class="card-tag">Maize — Fertiliser Timing</span>
+            <h3>Top-Dress Fertiliser This Week</h3>
+            <p>Maize crops at 6-leaf stage should receive NPK top-dressing now for optimal cob development. Rain forecast for Thursday in Bo district makes this an ideal application window.</p>
+          </div>
+        </div>
+        <div class="card reveal">
+          <div class="card-img" style="background:#F3E5F5;">🫚</div>
+          <div class="card-body">
+            <span class="card-tag">Palm Oil — Harvest Tip</span>
+            <h3>Identify Ready Bunches</h3>
+            <p>Fresh fruit bunches are ready when 5–10 loose fruits fall to the base. Harvest within 10 days of ripening to maintain oil quality. Store in shaded areas before processing.</p>
+          </div>
+        </div>
+        <div class="card reveal">
+          <div class="card-img" style="background:#E0F7FA;">🍌</div>
+          <div class="card-body">
+            <span class="card-tag">Plantain — Water Management</span>
+            <h3>Mulching to Retain Soil Moisture</h3>
+            <p>During dry spells, apply 10cm thick organic mulch around plantain bases. This reduces water loss by up to 60% and suppresses weed growth without chemical herbicides.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WEATHER -->
+  <section id="weather">
+    <div class="max-w">
+      <p class="section-label">Weather Alerts</p>
+      <h2 class="section-title">Local Weather for Farmers</h2>
+      <p class="section-sub">Accurate district-level forecasts to help you plan planting, spraying, and harvest days.</p>
+      <div class="weather-grid">
+        <div class="weather-main reveal">
+          <p class="location">📍 Freetown, Western Area</p>
+          <div class="temp">28°C</div>
+          <div class="condition">⛅ Partly Cloudy — Good for field work</div>
+          <div class="weather-details">
+            <div class="w-detail"><strong>76%</strong>Humidity</div>
+            <div class="w-detail"><strong>12 km/h</strong>Wind Speed</div>
+            <div class="w-detail"><strong>4.2mm</strong>Rain (today)</div>
+            <div class="w-detail"><strong>31°C</strong>Feels Like</div>
+          </div>
+        </div>
+        <div class="forecast-list reveal">
+          <div class="forecast-item">
+            <div><div class="fc-day">Tomorrow</div><div class="fc-advice">Avoid spraying — rain expected</div></div>
+            <div class="fc-icon">🌧️</div>
+            <div class="fc-temp">25°C</div>
+          </div>
+          <div class="forecast-item">
+            <div><div class="fc-day">Thursday</div><div class="fc-advice">Good planting day</div></div>
+            <div class="fc-icon">☀️</div>
+            <div class="fc-temp">30°C</div>
+          </div>
+          <div class="forecast-item">
+            <div><div class="fc-day">Friday</div><div class="fc-advice">Light showers — irrigate less</div></div>
+            <div class="fc-icon">🌦️</div>
+            <div class="fc-temp">27°C</div>
+          </div>
+          <div class="forecast-item">
+            <div><div class="fc-day">Saturday</div><div class="fc-advice">Harvest day — dry & sunny</div></div>
+            <div class="fc-icon">☀️</div>
+            <div class="fc-temp">32°C</div>
+          </div>
+          <div class="forecast-item">
+            <div><div class="fc-day">Sunday</div><div class="fc-advice">Heavy rain — rest day</div></div>
+            <div class="fc-icon">⛈️</div>
+            <div class="fc-temp">24°C</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARKET PRICES -->
+  <section id="market">
+    <div class="max-w">
+      <p class="section-label">Market Intelligence</p>
+      <h2 class="section-title">Live Crop Prices Across Sierra Leone</h2>
+      <p class="section-sub">Know what your crops are worth before you sell. Prices updated weekly from district markets.</p>
+      <div class="market-table-wrap reveal">
+        <table>
+          <thead>
+            <tr>
+              <th>Crop</th>
+              <th>Unit</th>
+              <th>Freetown Price</th>
+              <th>Bo Market</th>
+              <th>Makeni Market</th>
+              <th>Trend</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>🌾 Rice (local)</td>
+              <td>50kg bag</td>
+              <td class="price-up">Le 320,000</td>
+              <td>Le 290,000</td>
+              <td>Le 275,000</td>
+              <td><span class="badge badge-up">↑ Rising</span></td>
+            </tr>
+            <tr>
+              <td>🥜 Groundnut</td>
+              <td>1kg</td>
+              <td class="price-up">Le 18,500</td>
+              <td>Le 17,000</td>
+              <td>Le 16,800</td>
+              <td><span class="badge badge-up">↑ Rising</span></td>
+            </tr>
+            <tr>
+              <td>🍠 Cassava</td>
+              <td>Bag (80kg)</td>
+              <td class="price-down">Le 95,000</td>
+              <td>Le 88,000</td>
+              <td>Le 90,000</td>
+              <td><span class="badge badge-down">↓ Falling</span></td>
+            </tr>
+            <tr>
+              <td>🌽 Maize</td>
+              <td>50kg bag</td>
+              <td class="price-up">Le 180,000</td>
+              <td>Le 165,000</td>
+              <td>Le 170,000</td>
+              <td><span class="badge badge-up">↑ Stable</span></td>
+            </tr>
+            <tr>
+              <td>🫚 Palm Oil</td>
+              <td>5 litre tin</td>
+              <td class="price-down">Le 75,000</td>
+              <td>Le 70,000</td>
+              <td>Le 68,000</td>
+              <td><span class="badge badge-down">↓ Falling</span></td>
+            </tr>
+            <tr>
+              <td>🍌 Plantain</td>
+              <td>Bunch</td>
+              <td class="price-up">Le 45,000</td>
+              <td>Le 38,000</td>
+              <td>Le 40,000</td>
+              <td><span class="badge badge-up">↑ Rising</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size:0.78rem;color:var(--muted);margin-top:0.8rem;">Last updated: June 2026 · Source: Sierra Leone Agricultural Market Information System</p>
+    </div>
+  </section>
+
+  <!-- TIPS -->
+  <section id="tips">
+    <div class="max-w">
+      <p class="section-label">Best Practices</p>
+      <h2 class="section-title">Farming Tips for Sierra Leone</h2>
+      <p class="section-sub">Practical advice to increase yields and protect your land across all seasons.</p>
+      <div class="tips-grid">
+        <div class="tip-card reveal">
+          <div class="tip-icon">🌱</div>
+          <h4>Soil Testing</h4>
+          <p>Test your soil pH every 2 seasons. Most Sierra Leone soils are acidic — lime application can increase rice yields by up to 30%.</p>
+        </div>
+        <div class="tip-card reveal">
+          <div class="tip-icon">💧</div>
+          <h4>Water Conservation</h4>
+          <p>Use contour bunding on sloped farms in the Northern Province to reduce runoff by 40% and retain rainwater during dry spells.</p>
+        </div>
+        <div class="tip-card reveal">
+          <div class="tip-icon">🌿</div>
+          <h4>Intercropping</h4>
+          <p>Plant legumes between cassava rows. They fix nitrogen naturally, reducing your fertiliser costs while increasing total farm output.</p>
+        </div>
+        <div class="tip-card reveal">
+          <div class="tip-icon">🐛</div>
+          <h4>Integrated Pest Management</h4>
+          <p>Monitor your crops every 3 days during the growing season. Early pest detection reduces crop loss by 60% before serious damage occurs.</p>
+        </div>
+        <div class="tip-card reveal">
+          <div class="tip-icon">🌾</div>
+          <h4>Post-Harvest Storage</h4>
+          <p>Use hermetic storage bags to protect grain from weevils without chemicals. Reduces post-harvest losses from 30% to under 5%.</p>
+        </div>
+        <div class="tip-card reveal">
+          <div class="tip-icon">📱</div>
+          <h4>Digital Record Keeping</h4>
+          <p>Track your planting dates, inputs, and yields each season. Farmers with records earn 20% more when negotiating with buyers.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REGISTER FORM -->
+  <section id="register">
+    <div class="max-w">
+      <div class="form-wrap">
+        <div class="form-info">
+          <p class="section-label">Join AgroSL</p>
+          <h2>Register as a Farmer</h2>
+          <p>Get personalised advisory alerts, market price notifications, and access to extension officer support — completely free.</p>
+          <ul class="benefit-list">
+            <li>Weekly SMS crop advisory for your district</li>
+            <li>Live market price updates before you sell</li>
+            <li>Direct access to certified extension officers</li>
+            <li>Free training resources in Krio and English</li>
+            <li>Weather alerts 48 hours before adverse conditions</li>
+          </ul>
+        </div>
+        <div>
+          <form id="farmerForm" novalidate>
+            <div class="form-row">
+              <div class="field">
+                <label for="fname">First Name *</label>
+                <input type="text" id="fname" placeholder="e.g. Aminata" required />
+              </div>
+              <div class="field">
+                <label for="lname">Last Name *</label>
+                <input type="text" id="lname" placeholder="e.g. Koroma" required />
+              </div>
+            </div>
+            <div class="field">
+              <label for="phone">Phone Number *</label>
+              <input type="tel" id="phone" placeholder="+232 78 000 000" required />
+            </div>
+            <div class="field">
+              <label for="district">District *</label>
+              <select id="district" required>
+                <option value="">Select your district…</option>
+                <option>Western Area Urban</option>
+                <option>Western Area Rural</option>
+                <option>Bo</option>
+                <option>Bonthe</option>
+                <option>Kenema</option>
+                <option>Kailahun</option>
+                <option>Kono</option>
+                <option>Tonkolili</option>
+                <option>Bombali</option>
+                <option>Koinadugu</option>
+                <option>Falaba</option>
+                <option>Karene</option>
+                <option>Port Loko</option>
+                <option>Kambia</option>
+                <option>Moyamba</option>
+                <option>Pujehun</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="crop">Primary Crop *</label>
+              <select id="crop" required>
+                <option value="">Select primary crop…</option>
+                <option>Rice</option>
+                <option>Groundnut</option>
+                <option>Cassava</option>
+                <option>Maize</option>
+                <option>Palm Oil</option>
+                <option>Plantain</option>
+                <option>Cocoa</option>
+                <option>Coffee</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="farmsize">Farm Size (hectares)</label>
+              <input type="number" id="farmsize" placeholder="e.g. 2.5" min="0.1" step="0.1" />
+            </div>
+            <div class="field">
+              <label for="challenge">Current Challenge (optional)</label>
+              <textarea id="challenge" placeholder="Describe your biggest farming challenge…"></textarea>
+            </div>
+            <button type="button" class="submit-btn" onclick="submitForm()">Register as Farmer →</button>
+          </form>
+          <div class="form-success" id="formSuccess">
+            ✅ Registration successful! You'll receive your first SMS advisory within 24 hours.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="max-w">
+      <p class="section-label">Get in Touch</p>
+      <h2 class="section-title">Contact Us</h2>
+      <p class="section-sub">Reach our team of agricultural extension officers and support staff across Sierra Leone.</p>
+      <div class="contact-grid">
+        <div class="contact-info reveal">
+          <h3>We're here to help you grow.</h3>
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            <div class="contact-detail">
+              <strong>Head Office</strong>
+              <span>Ministry of Agriculture, Youyi Building, Freetown, Sierra Leone</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📞</div>
+            <div class="contact-detail">
+              <strong>Farmer Helpline</strong>
+              <span>+232 76 123 456 (Mon–Fri, 8am–5pm)</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">✉️</div>
+            <div class="contact-detail">
+              <strong>Email</strong>
+              <span>info@agrosl.gov.sl</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📻</div>
+            <div class="contact-detail">
+              <strong>Radio Advisory</strong>
+              <span>SLBC Radio — Every Monday & Thursday at 6:30am</span>
+            </div>
+          </div>
+        </div>
+        <div class="contact-form reveal">
+          <h4>Send us a message</h4>
+          <div class="field">
+            <label for="cname">Your Name</label>
+            <input type="text" id="cname" placeholder="Full name" />
+          </div>
+          <div class="field">
+            <label for="cemail">Email or Phone</label>
+            <input type="text" id="cemail" placeholder="email@example.com or +232 …" />
+          </div>
+          <div class="field">
+            <label for="csubject">Subject</label>
+            <select id="csubject">
+              <option>Crop Advisory Question</option>
+              <option>Market Price Enquiry</option>
+              <option>Pest / Disease Report</option>
+              <option>Extension Officer Request</option>
+              <option>Technical Support</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="cmessage">Message</label>
+            <textarea id="cmessage" placeholder="How can we help you?"></textarea>
+          </div>
+          <button class="submit-btn" onclick="submitContact()">Send Message →</button>
+          <div class="form-success" id="contactSuccess" style="margin-top:0.8rem;">
+            ✅ Message received! We'll respond within 2 business days.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="nav-logo">Agro<span>SL</span></div>
+        <p>Sierra Leone's national farmer advisory portal. Built to empower smallholder farmers with real-time information, weather alerts, and market data across all 16 districts.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Services</h5>
+        <ul>
+          <li><a href="#advisory">Crop Advisory</a></li>
+          <li><a href="#weather">Weather Alerts</a></li>
+          <li><a href="#market">Market Prices</a></li>
+          <li><a href="#tips">Farming Tips</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Resources</h5>
+        <ul>
+          <li><a href="#register">Register</a></li>
+          <li><a href="#contact">Extension Officers</a></li>
+          <li><a href="#">Training Videos</a></li>
+          <li><a href="#">Krio Resources</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>About</h5>
+        <ul>
+          <li><a href="#">Ministry of Agriculture</a></li>
+          <li><a href="#">DPG Principles</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Open Source</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 AgroSL – Sierra Leone Farmer Advisory Portal. Built with ❤️ for Sierra Leonean farmers.</p>
+      <span class="dpg-badge">🌐 Digital Public Good</span>
+    </div>
+  </footer>
+
+  <!-- JAVASCRIPT -->
+  <script>
+    // --- Hamburger Menu ---
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+    function closeMobile() { mobileMenu.classList.remove('open'); }
+
+    // --- Today's Advisory (Signature Feature) ---
+    const advisories = [
+      {
+        title: "🌧️ Rain Alert — Northern Province",
+        body: "Heavy rainfall expected in Bombali and Tonkolili districts this Thursday. Delay fertiliser application by 2 days to prevent nutrient runoff."
+      },
+      {
+        title: "🌾 Rice Planting Season is Open",
+        body: "Optimal planting conditions across the Eastern Province. Soil temperatures above 24°C — ideal for NERICA varieties. Aim for 20kg seed per hectare."
+      },
+      {
+        title: "🐛 Fall Armyworm Detected in Bo District",
+        body: "Extension officers report Fall Armyworm on maize farms around Tikonko chiefdom. Apply chlorpyrifos early morning. Report sightings to 076-123-456."
+      },
+      {
+        title: "💰 Rice Prices Rising — Good Time to Sell",
+        body: "Local rice fetching Le 320,000 per 50kg bag at Freetown markets, up 12% from last month. Consider moving stored stock this week."
+      },
+      {
+        title: "🌱 Free Seedling Distribution — Kenema",
+        body: "The Ministry of Agriculture is distributing free cassava cuttings and groundnut seeds at Kenema Agricultural Station this Friday, 8am–2pm."
+      }
+    ];
+    let currentAdv = 0;
+    function showAdvisory(i) {
+      document.getElementById('adv-title').textContent = advisories[i].title;
+      document.getElementById('adv-body').textContent = advisories[i].body;
+    }
+    function nextAdvisory() {
+      currentAdv = (currentAdv + 1) % advisories.length;
+      showAdvisory(currentAdv);
+    }
+    function prevAdvisory() {
+      currentAdv = (currentAdv - 1 + advisories.length) % advisories.length;
+      showAdvisory(currentAdv);
+    }
+    showAdvisory(0);
+    setInterval(nextAdvisory, 6000);
+
+    // --- Farmer Registration Form ---
+    function submitForm() {
+      const fname = document.getElementById('fname').value.trim();
+      const lname = document.getElementById('lname').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const district = document.getElementById('district').value;
+      const crop = document.getElementById('crop').value;
+      if (!fname || !lname || !phone || !district || !crop) {
+        alert('Please fill in all required fields (marked with *).');
+        return;
+      }
+      document.getElementById('farmerForm').style.display = 'none';
+      document.getElementById('formSuccess').style.display = 'block';
+    }
+
+    // --- Contact Form ---
+    function submitContact() {
+      const name = document.getElementById('cname').value.trim();
+      const contact = document.getElementById('cemail').value.trim();
+      const msg = document.getElementById('cmessage').value.trim();
+      if (!name || !contact || !msg) {
+        alert('Please fill in your name, contact details, and message.');
+        return;
+      }
+      document.getElementById('contactSuccess').style.display = 'block';
+      document.getElementById('cname').value = '';
+      document.getElementById('cemail').value = '';
+      document.getElementById('cmessage').value = '';
+    }
+
+    // --- Scroll Reveal ---
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    reveals.forEach(r => observer.observe(r));
+  </script>
+</body>
+</html>
