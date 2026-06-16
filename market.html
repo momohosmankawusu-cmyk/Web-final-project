@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Live Crop Prices – AgroSL | Sierra Leone</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="index.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">Agro<span>SL</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="advisory.html">Advisory</a></li>
+      <li><a href="weather.html">Weather</a></li>
+      <li class="active"><a href="market.html">Market</a></li>
+      <li><a href="tips.html">Tips</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="register.html" class="nav-cta">Join Free</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html" onclick="closeMobile()">Home</a>
+    <a href="advisory.html" onclick="closeMobile()">Advisory</a>
+    <a href="weather.html" onclick="closeMobile()">Weather</a>
+    <a href="market.html" class="active" onclick="closeMobile()">Market</a>
+    <a href="tips.html" onclick="closeMobile()">Tips</a>
+    <a href="register.html" onclick="closeMobile()">Register Free</a>
+    <a href="contact.html" onclick="closeMobile()">Contact</a>
+  </div>
+
+  <!-- PAGE HEADER -->
+  <header class="page-header">
+    <div class="page-header-content">
+      <span class="hero-eyebrow">💰 Market Intelligence</span>
+      <h1>Live Crop Prices</h1>
+      <p>Stay informed about weekly prices of crops across Sierra Leone's key markets to optimize your sales.</p>
+    </div>
+  </header>
+
+  <!-- MARKET PRICES TABLE -->
+  <section id="market" style="padding-top: 60px;">
+    <div class="max-w">
+      <div class="market-table-wrap reveal">
+        <table>
+          <thead>
+            <tr>
+              <th>Crop</th>
+              <th>Unit</th>
+              <th>Freetown Price</th>
+              <th>Bo Market</th>
+              <th>Makeni Market</th>
+              <th>Trend</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>🌾 Rice (local)</td>
+              <td>50kg bag</td>
+              <td class="price-up">Le 320,000</td>
+              <td>Le 290,000</td>
+              <td>Le 275,000</td>
+              <td><span class="badge badge-up">↑ Rising</span></td>
+            </tr>
+            <tr>
+              <td>🥜 Groundnut</td>
+              <td>1kg</td>
+              <td class="price-up">Le 18,500</td>
+              <td>Le 17,000</td>
+              <td>Le 16,800</td>
+              <td><span class="badge badge-up">↑ Rising</span></td>
+            </tr>
+            <tr>
+              <td>🍠 Cassava</td>
+              <td>Bag (80kg)</td>
+              <td class="price-down">Le 95,000</td>
+              <td>Le 88,000</td>
+              <td>Le 90,000</td>
+              <td><span class="badge badge-down">↓ Falling</span></td>
+            </tr>
+            <tr>
+              <td>🌽 Maize</td>
+              <td>50kg bag</td>
+              <td class="price-up">Le 180,000</td>
+              <td>Le 165,000</td>
+              <td>Le 170,000</td>
+              <td><span class="badge badge-up">↑ Stable</span></td>
+            </tr>
+            <tr>
+              <td>🫚 Palm Oil</td>
+              <td>5 litre tin</td>
+              <td class="price-down">Le 75,000</td>
+              <td>Le 70,000</td>
+              <td>Le 68,000</td>
+              <td><span class="badge badge-down">↓ Falling</span></td>
+            </tr>
+            <tr>
+              <td>🍌 Plantain</td>
+              <td>Bunch</td>
+              <td class="price-up">Le 45,000</td>
+              <td>Le 38,000</td>
+              <td>Le 40,000</td>
+              <td><span class="badge badge-up">↑ Rising</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size:0.78rem;color:var(--muted);margin-top:0.8rem;">Last updated: June 2026 · Source: Sierra Leone Agricultural Market Information System</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="nav-logo">Agro<span>SL</span></div>
+        <p>Sierra Leone's national farmer advisory portal. Built to empower smallholder farmers with real-time information, weather alerts, and market data across all 16 districts.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Services</h5>
+        <ul>
+          <li><a href="advisory.html">Crop Advisory</a></li>
+          <li><a href="weather.html">Weather Alerts</a></li>
+          <li><a href="market.html">Market Prices</a></li>
+          <li><a href="tips.html">Farming Tips</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Resources</h5>
+        <ul>
+          <li><a href="register.html">Register</a></li>
+          <li><a href="contact.html">Extension Officers</a></li>
+          <li><a href="#">Training Videos</a></li>
+          <li><a href="#">Krio Resources</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>About</h5>
+        <ul>
+          <li><a href="#">Ministry of Agriculture</a></li>
+          <li><a href="#">DPG Principles</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Open Source</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 AgroSL – Sierra Leone Farmer Advisory Portal. Built with ❤️ for Sierra Leonean farmers.</p>
+      <span class="dpg-badge">🌐 Digital Public Good</span>
+    </div>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script src="main.js"></script>
+</body>
+</html>

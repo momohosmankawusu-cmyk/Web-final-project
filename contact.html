@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact AgroSL – Get Support | Sierra Leone</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="index.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">Agro<span>SL</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="advisory.html">Advisory</a></li>
+      <li><a href="weather.html">Weather</a></li>
+      <li><a href="market.html">Market</a></li>
+      <li><a href="tips.html">Tips</a></li>
+      <li class="active"><a href="contact.html">Contact</a></li>
+      <li><a href="register.html" class="nav-cta">Join Free</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html" onclick="closeMobile()">Home</a>
+    <a href="advisory.html" onclick="closeMobile()">Advisory</a>
+    <a href="weather.html" onclick="closeMobile()">Weather</a>
+    <a href="market.html" onclick="closeMobile()">Market</a>
+    <a href="tips.html" onclick="closeMobile()">Tips</a>
+    <a href="register.html" onclick="closeMobile()">Register Free</a>
+    <a href="contact.html" class="active" onclick="closeMobile()">Contact</a>
+  </div>
+
+  <!-- PAGE HEADER -->
+  <header class="page-header">
+    <div class="page-header-content">
+      <span class="hero-eyebrow">📞 Support Channels</span>
+      <h1>Contact & Support</h1>
+      <p>Reach our team of agricultural extension officers, researchers, and technical staff across Sierra Leone.</p>
+    </div>
+  </header>
+
+  <!-- CONTACT CONTENT -->
+  <section id="contact" style="padding-top: 60px;">
+    <div class="max-w">
+      <div class="contact-grid">
+        <div class="contact-info reveal">
+          <h3>We're here to help you grow.</h3>
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            <div class="contact-detail">
+              <strong>Head Office</strong>
+              <span>Ministry of Agriculture, Youyi Building, Freetown, Sierra Leone</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📞</div>
+            <div class="contact-detail">
+              <strong>Farmer Helpline</strong>
+              <span>+232 76 123 456 (Mon–Fri, 8am–5pm)</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">✉️</div>
+            <div class="contact-detail">
+              <strong>Email</strong>
+              <span>info@agrosl.gov.sl</span>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📻</div>
+            <div class="contact-detail">
+              <strong>Radio Advisory</strong>
+              <span>SLBC Radio — Every Monday & Thursday at 6:30am</span>
+            </div>
+          </div>
+        </div>
+        <div class="contact-form reveal">
+          <h4>Send us a message</h4>
+          <div class="field">
+            <label for="cname">Your Name</label>
+            <input type="text" id="cname" placeholder="Full name" />
+          </div>
+          <div class="field">
+            <label for="cemail">Email or Phone</label>
+            <input type="text" id="cemail" placeholder="email@example.com or +232 …" />
+          </div>
+          <div class="field">
+            <label for="csubject">Subject</label>
+            <select id="csubject">
+              <option>Crop Advisory Question</option>
+              <option>Market Price Enquiry</option>
+              <option>Pest / Disease Report</option>
+              <option>Extension Officer Request</option>
+              <option>Technical Support</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="cmessage">Message</label>
+            <textarea id="cmessage" placeholder="How can we help you?"></textarea>
+          </div>
+          <button class="submit-btn" onclick="submitContact()">Send Message →</button>
+          <div class="form-success" id="contactSuccess" style="margin-top:0.8rem;">
+            ✅ Message received! We'll respond within 2 business days.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="nav-logo">Agro<span>SL</span></div>
+        <p>Sierra Leone's national farmer advisory portal. Built to empower smallholder farmers with real-time information, weather alerts, and market data across all 16 districts.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Services</h5>
+        <ul>
+          <li><a href="advisory.html">Crop Advisory</a></li>
+          <li><a href="weather.html">Weather Alerts</a></li>
+          <li><a href="market.html">Market Prices</a></li>
+          <li><a href="tips.html">Farming Tips</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Resources</h5>
+        <ul>
+          <li><a href="register.html">Register</a></li>
+          <li><a href="contact.html">Extension Officers</a></li>
+          <li><a href="#">Training Videos</a></li>
+          <li><a href="#">Krio Resources</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>About</h5>
+        <ul>
+          <li><a href="#">Ministry of Agriculture</a></li>
+          <li><a href="#">DPG Principles</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Open Source</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 AgroSL – Sierra Leone Farmer Advisory Portal. Built with ❤️ for Sierra Leonean farmers.</p>
+      <span class="dpg-badge">🌐 Digital Public Good</span>
+    </div>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script src="main.js"></script>
+  <script>
+    // --- Contact Form ---
+    function submitContact() {
+      const name = document.getElementById('cname').value.trim();
+      const contact = document.getElementById('cemail').value.trim();
+      const msg = document.getElementById('cmessage').value.trim();
+      if (!name || !contact || !msg) {
+        alert('Please fill in your name, contact details, and message.');
+        return;
+      }
+      document.getElementById('contactSuccess').style.display = 'block';
+      document.getElementById('cname').value = '';
+      document.getElementById('cemail').value = '';
+      document.getElementById('cmessage').value = '';
+    }
+  </script>
+</body>
+</html>

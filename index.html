@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AgroSL – Farmer Advisory Portal | Sierra Leone</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="index.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">Agro<span>SL</span></a>
+    <ul class="nav-links">
+      <li class="active"><a href="index.html">Home</a></li>
+      <li><a href="advisory.html">Advisory</a></li>
+      <li><a href="weather.html">Weather</a></li>
+      <li><a href="market.html">Market</a></li>
+      <li><a href="tips.html">Tips</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="register.html" class="nav-cta">Join Free</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html" class="active" onclick="closeMobile()">Home</a>
+    <a href="advisory.html" onclick="closeMobile()">Advisory</a>
+    <a href="weather.html" onclick="closeMobile()">Weather</a>
+    <a href="market.html" onclick="closeMobile()">Market</a>
+    <a href="tips.html" onclick="closeMobile()">Tips</a>
+    <a href="register.html" onclick="closeMobile()">Register Free</a>
+    <a href="contact.html" onclick="closeMobile()">Contact</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <span class="hero-eyebrow">🌿 Sierra Leone Farmer Portal</span>
+      <h1>Grow <em>Smarter,</em><br>Harvest Better</h1>
+      <p>Real-time crop advisories, local weather alerts, and live market prices — built for Sierra Leonean farmers, in every district.</p>
+      <div class="hero-btns">
+        <a href="advisory.html" class="btn-primary">View Crop Advisories</a>
+        <a href="register.html" class="btn-outline">Register as Farmer</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <span class="stat-num">12,400+</span>
+          <span class="stat-label">Registered Farmers</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">14</span>
+          <span class="stat-label">Districts Covered</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">6</span>
+          <span class="stat-label">Key Crops Tracked</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TODAY'S ADVISORY (Signature Feature) -->
+  <div class="advisory-strip">
+    <div class="advisory-inner">
+      <div class="advisory-label">Today's Advisory</div>
+      <div class="advisory-text">
+        <h3 id="adv-title">Loading advisory…</h3>
+        <p id="adv-body">Please wait.</p>
+      </div>
+      <div class="advisory-nav">
+        <button class="adv-btn" onclick="prevAdvisory()" aria-label="Previous">&#8593;</button>
+        <button class="adv-btn" onclick="nextAdvisory()" aria-label="Next">&#8595;</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SERVICES PREVIEW -->
+  <section id="services-preview">
+    <div class="max-w">
+      <p class="section-label">Our Services</p>
+      <h2 class="section-title">Built to Empower Sierra Leonean Farmers</h2>
+      <p class="section-sub">Access professional agricultural support services, live regional price metrics, and timely weather forecasts anytime.</p>
+      <div class="cards-grid">
+        <div class="card reveal">
+          <div class="card-img" style="background:#E8F5E9;">🌾</div>
+          <div class="card-body">
+            <span class="card-tag">Expert Guidance</span>
+            <h3>Crop Advisories</h3>
+            <p>Get timely advice on paddy field preparation, groundnut spacing, pest management, and post-harvest storage.</p>
+            <a href="advisory.html" class="btn-primary" style="display:inline-block; margin-top: 1.2rem; font-size: 0.85rem; padding: 0.5rem 1.2rem;">Explore Advisories →</a>
+          </div>
+        </div>
+        <div class="card reveal">
+          <div class="card-img" style="background:#E3F2FD;">🌧️</div>
+          <div class="card-body">
+            <span class="card-tag">Weather Intelligence</span>
+            <h3>District Alerts</h3>
+            <p>Check regional forecasts to pick the best days for weeding, spraying, and harvesting to minimize risk.</p>
+            <a href="weather.html" class="btn-primary" style="display:inline-block; margin-top: 1.2rem; font-size: 0.85rem; padding: 0.5rem 1.2rem;">View Weather →</a>
+          </div>
+        </div>
+        <div class="card reveal">
+          <div class="card-img" style="background:#FFF8E1;">💰</div>
+          <div class="card-body">
+            <span class="card-tag">Market Pricing</span>
+            <h3>Live Price Indices</h3>
+            <p>Find weekly crop prices in key local markets (Bo, Makeni, Freetown) to trade from a position of confidence.</p>
+            <a href="market.html" class="btn-primary" style="display:inline-block; margin-top: 1.2rem; font-size: 0.85rem; padding: 0.5rem 1.2rem;">Check Prices →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="nav-logo">Agro<span>SL</span></div>
+        <p>Sierra Leone's national farmer advisory portal. Built to empower smallholder farmers with real-time information, weather alerts, and market data across all 16 districts.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Services</h5>
+        <ul>
+          <li><a href="advisory.html">Crop Advisory</a></li>
+          <li><a href="weather.html">Weather Alerts</a></li>
+          <li><a href="market.html">Market Prices</a></li>
+          <li><a href="tips.html">Farming Tips</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Resources</h5>
+        <ul>
+          <li><a href="register.html">Register</a></li>
+          <li><a href="contact.html">Extension Officers</a></li>
+          <li><a href="#">Training Videos</a></li>
+          <li><a href="#">Krio Resources</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>About</h5>
+        <ul>
+          <li><a href="#">Ministry of Agriculture</a></li>
+          <li><a href="#">DPG Principles</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Open Source</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 AgroSL – Sierra Leone Farmer Advisory Portal. Built with ❤️ for Sierra Leonean farmers.</p>
+      <span class="dpg-badge">🌐 Digital Public Good</span>
+    </div>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script src="main.js"></script>
+  <script>
+    // --- Today's Advisory (Signature Feature) ---
+    const advisories = [
+      {
+        title: "🌧️ Rain Alert — Northern Province",
+        body: "Heavy rainfall expected in Bombali and Tonkolili districts this Thursday. Delay fertiliser application by 2 days to prevent nutrient runoff."
+      },
+      {
+        title: "🌾 Rice Planting Season is Open",
+        body: "Optimal planting conditions across the Eastern Province. Soil temperatures above 24°C — ideal for NERICA varieties. Aim for 20kg seed per hectare."
+      },
+      {
+        title: "🐛 Fall Armyworm Detected in Bo District",
+        body: "Extension officers report Fall Armyworm on maize farms around Tikonko chiefdom. Apply chlorpyrifos early morning. Report sightings to 076-123-456."
+      },
+      {
+        title: "💰 Rice Prices Rising — Good Time to Sell",
+        body: "Local rice fetching Le 320,000 per 50kg bag at Freetown markets, up 12% from last month. Consider moving stored stock this week."
+      },
+      {
+        title: "🌱 Free Seedling Distribution — Kenema",
+        body: "The Ministry of Agriculture is distributing free cassava cuttings and groundnut seeds at Kenema Agricultural Station this Friday, 8am–2pm."
+      }
+    ];
+    let currentAdv = 0;
+    function showAdvisory(i) {
+      document.getElementById('adv-title').textContent = advisories[i].title;
+      document.getElementById('adv-body').textContent = advisories[i].body;
+    }
+    function nextAdvisory() {
+      currentAdv = (currentAdv + 1) % advisories.length;
+      showAdvisory(currentAdv);
+    }
+    function prevAdvisory() {
+      currentAdv = (currentAdv - 1 + advisories.length) % advisories.length;
+      showAdvisory(currentAdv);
+    }
+    showAdvisory(0);
+    setInterval(nextAdvisory, 6000);
+  </script>
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Farming Tips & Best Practices – AgroSL | Sierra Leone</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="index.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">Agro<span>SL</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="advisory.html">Advisory</a></li>
+      <li><a href="weather.html">Weather</a></li>
+      <li><a href="market.html">Market</a></li>
+      <li class="active"><a href="tips.html">Tips</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="register.html" class="nav-cta">Join Free</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html" onclick="closeMobile()">Home</a>
+    <a href="advisory.html" onclick="closeMobile()">Advisory</a>
+    <a href="weather.html" onclick="closeMobile()">Weather</a>
+    <a href="market.html" onclick="closeMobile()">Market</a>
+    <a href="tips.html" class="active" onclick="closeMobile()">Tips</a>
+    <a href="register.html" onclick="closeMobile()">Register Free</a>
+    <a href="contact.html" onclick="closeMobile()">Contact</a>
+  </div>
+
+  <!-- PAGE HEADER -->
+  <header class="page-header">
+    <div class="page-header-content">
+      <span class="hero-eyebrow">🌱 Best Practices</span>
+      <h1>Farming Tips & Techniques</h1>
+      <p>Practical and proven advice designed to increase crop yields, conserve soil, and protect land resources.</p>
+    </div>
+  </header>
+
+  <!-- TIPS SECTION -->
+  <section id="tips" style="padding-top: 60px;">
+    <div class="max-w">
+      <div class="tips-grid">
+        <div class="tip-card reveal">
+          <div class="tip-icon">🌱</div>
+          <h4>Soil Testing</h4>
+          <p>Test your soil pH every 2 seasons. Most Sierra Leone soils are acidic — lime application can increase rice yields by up to 30%.</p>
+        </div>
+        <div class="tip-card reveal">
+          <div class="tip-icon">💧</div>
+          <h4>Water Conservation</h4>
+          <p>Use contour bunding on sloped farms in the Northern Province to reduce runoff by 40% and retain rainwater during dry spells.</p>
+        </div>
+        <div class="tip-card reveal">
+          <div class="tip-icon">🌿</div>
+          <h4>Intercropping</h4>
+          <p>Plant legumes between cassava rows. They fix nitrogen naturally, reducing your fertiliser costs while increasing total farm output.</p>
+        </div>
+        <div class="tip-card reveal">
+          <div class="tip-icon">🐛</div>
+          <h4>Integrated Pest Management</h4>
+          <p>Monitor your crops every 3 days during the growing season. Early pest detection reduces crop loss by 60% before serious damage occurs.</p>
+        </div>
+        <div class="tip-card reveal">
+          <div class="tip-icon">🌾</div>
+          <h4>Post-Harvest Storage</h4>
+          <p>Use hermetic storage bags to protect grain from weevils without chemicals. Reduces post-harvest losses from 30% to under 5%.</p>
+        </div>
+        <div class="tip-card reveal">
+          <div class="tip-icon">📱</div>
+          <h4>Digital Record Keeping</h4>
+          <p>Track your planting dates, inputs, and yields each season. Farmers with records earn 20% more when negotiating with buyers.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="nav-logo">Agro<span>SL</span></div>
+        <p>Sierra Leone's national farmer advisory portal. Built to empower smallholder farmers with real-time information, weather alerts, and market data across all 16 districts.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Services</h5>
+        <ul>
+          <li><a href="advisory.html">Crop Advisory</a></li>
+          <li><a href="weather.html">Weather Alerts</a></li>
+          <li><a href="market.html">Market Prices</a></li>
+          <li><a href="tips.html">Farming Tips</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Resources</h5>
+        <ul>
+          <li><a href="register.html">Register</a></li>
+          <li><a href="contact.html">Extension Officers</a></li>
+          <li><a href="#">Training Videos</a></li>
+          <li><a href="#">Krio Resources</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>About</h5>
+        <ul>
+          <li><a href="#">Ministry of Agriculture</a></li>
+          <li><a href="#">DPG Principles</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Open Source</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 AgroSL – Sierra Leone Farmer Advisory Portal. Built with ❤️ for Sierra Leonean farmers.</p>
+      <span class="dpg-badge">🌐 Digital Public Good</span>
+    </div>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script src="main.js"></script>
+</body>
+</html>

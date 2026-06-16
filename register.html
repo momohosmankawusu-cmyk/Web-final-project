@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Join AgroSL – Farmer Registration | Sierra Leone</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="index.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">Agro<span>SL</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="advisory.html">Advisory</a></li>
+      <li><a href="weather.html">Weather</a></li>
+      <li><a href="market.html">Market</a></li>
+      <li><a href="tips.html">Tips</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="register.html" class="nav-cta active" style="border: 2px solid var(--white);">Join Free</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html" onclick="closeMobile()">Home</a>
+    <a href="advisory.html" onclick="closeMobile()">Advisory</a>
+    <a href="weather.html" onclick="closeMobile()">Weather</a>
+    <a href="market.html" onclick="closeMobile()">Market</a>
+    <a href="tips.html" onclick="closeMobile()">Tips</a>
+    <a href="register.html" class="active" onclick="closeMobile()">Register Free</a>
+    <a href="contact.html" onclick="closeMobile()">Contact</a>
+  </div>
+
+  <!-- PAGE HEADER -->
+  <header class="page-header">
+    <div class="page-header-content">
+      <span class="hero-eyebrow">🌿 Join AgroSL</span>
+      <h1>Register as a Farmer</h1>
+      <p>Sign up to receive free weekly agricultural advisories, local weather alerts, and market prices via SMS.</p>
+    </div>
+  </header>
+
+  <!-- REGISTER FORM -->
+  <section id="register" style="padding-top: 60px;">
+    <div class="max-w">
+      <div class="form-wrap">
+        <div class="form-info">
+          <p class="section-label">Grow with us</p>
+          <h2>Exclusive Benefits</h2>
+          <p>Get personalized advisory alerts, market price notifications, and access to extension officer support — completely free.</p>
+          <ul class="benefit-list">
+            <li>Weekly SMS crop advisory for your district</li>
+            <li>Live market price updates before you sell</li>
+            <li>Direct access to certified extension officers</li>
+            <li>Free training resources in Krio and English</li>
+            <li>Weather alerts 48 hours before adverse conditions</li>
+          </ul>
+        </div>
+        <div>
+          <form id="farmerForm" novalidate>
+            <div class="form-row">
+              <div class="field">
+                <label for="fname">First Name *</label>
+                <input type="text" id="fname" placeholder="e.g. Aminata" required />
+              </div>
+              <div class="field">
+                <label for="lname">Last Name *</label>
+                <input type="text" id="lname" placeholder="e.g. Koroma" required />
+              </div>
+            </div>
+            <div class="field">
+              <label for="phone">Phone Number *</label>
+              <input type="tel" id="phone" placeholder="+232 78 000 000" required />
+            </div>
+            <div class="field">
+              <label for="district">District *</label>
+              <select id="district" required>
+                <option value="">Select your district…</option>
+                <option>Western Area Urban</option>
+                <option>Western Area Rural</option>
+                <option>Bo</option>
+                <option>Bonthe</option>
+                <option>Kenema</option>
+                <option>Kailahun</option>
+                <option>Kono</option>
+                <option>Tonkolili</option>
+                <option>Bombali</option>
+                <option>Koinadugu</option>
+                <option>Falaba</option>
+                <option>Karene</option>
+                <option>Port Loko</option>
+                <option>Kambia</option>
+                <option>Moyamba</option>
+                <option>Pujehun</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="crop">Primary Crop *</label>
+              <select id="crop" required>
+                <option value="">Select primary crop…</option>
+                <option>Rice</option>
+                <option>Groundnut</option>
+                <option>Cassava</option>
+                <option>Maize</option>
+                <option>Palm Oil</option>
+                <option>Plantain</option>
+                <option>Cocoa</option>
+                <option>Coffee</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="farmsize">Farm Size (hectares)</label>
+              <input type="number" id="farmsize" placeholder="e.g. 2.5" min="0.1" step="0.1" />
+            </div>
+            <div class="field">
+              <label for="challenge">Current Challenge (optional)</label>
+              <textarea id="challenge" placeholder="Describe your biggest farming challenge…"></textarea>
+            </div>
+            <button type="button" class="submit-btn" onclick="submitForm()">Register as Farmer →</button>
+          </form>
+          <div class="form-success" id="formSuccess">
+            ✅ Registration successful! You'll receive your first SMS advisory within 24 hours.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="nav-logo">Agro<span>SL</span></div>
+        <p>Sierra Leone's national farmer advisory portal. Built to empower smallholder farmers with real-time information, weather alerts, and market data across all 16 districts.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Services</h5>
+        <ul>
+          <li><a href="advisory.html">Crop Advisory</a></li>
+          <li><a href="weather.html">Weather Alerts</a></li>
+          <li><a href="market.html">Market Prices</a></li>
+          <li><a href="tips.html">Farming Tips</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Resources</h5>
+        <ul>
+          <li><a href="register.html">Register</a></li>
+          <li><a href="contact.html">Extension Officers</a></li>
+          <li><a href="#">Training Videos</a></li>
+          <li><a href="#">Krio Resources</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>About</h5>
+        <ul>
+          <li><a href="#">Ministry of Agriculture</a></li>
+          <li><a href="#">DPG Principles</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Open Source</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 AgroSL – Sierra Leone Farmer Advisory Portal. Built with ❤️ for Sierra Leonean farmers.</p>
+      <span class="dpg-badge">🌐 Digital Public Good</span>
+    </div>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script src="main.js"></script>
+  <script>
+    // --- Farmer Registration Form ---
+    function submitForm() {
+      const fname = document.getElementById('fname').value.trim();
+      const lname = document.getElementById('lname').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const district = document.getElementById('district').value;
+      const crop = document.getElementById('crop').value;
+      if (!fname || !lname || !phone || !district || !crop) {
+        alert('Please fill in all required fields (marked with *).');
+        return;
+      }
+      document.getElementById('farmerForm').style.display = 'none';
+      document.getElementById('formSuccess').style.display = 'block';
+    }
+  </script>
+</body>
+</html>

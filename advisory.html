@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Seasonal Crop Advisories – AgroSL | Sierra Leone</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="index.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">Agro<span>SL</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li class="active"><a href="advisory.html">Advisory</a></li>
+      <li><a href="weather.html">Weather</a></li>
+      <li><a href="market.html">Market</a></li>
+      <li><a href="tips.html">Tips</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="register.html" class="nav-cta">Join Free</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html" onclick="closeMobile()">Home</a>
+    <a href="advisory.html" class="active" onclick="closeMobile()">Advisory</a>
+    <a href="weather.html" onclick="closeMobile()">Weather</a>
+    <a href="market.html" onclick="closeMobile()">Market</a>
+    <a href="tips.html" onclick="closeMobile()">Tips</a>
+    <a href="register.html" onclick="closeMobile()">Register Free</a>
+    <a href="contact.html" onclick="closeMobile()">Contact</a>
+  </div>
+
+  <!-- PAGE HEADER -->
+  <header class="page-header">
+    <div class="page-header-content">
+      <span class="hero-eyebrow">🌿 Crop Guidance</span>
+      <h1>Seasonal Crop Advisories</h1>
+      <p>Expert farming guidance tailored to Sierra Leone's agricultural seasons, soils, and regional districts.</p>
+    </div>
+  </header>
+
+  <!-- TODAY'S ADVISORY (Signature Feature) -->
+  <div class="advisory-strip">
+    <div class="advisory-inner">
+      <div class="advisory-label">Today's Advisory</div>
+      <div class="advisory-text">
+        <h3 id="adv-title">Loading advisory…</h3>
+        <p id="adv-body">Please wait.</p>
+      </div>
+      <div class="advisory-nav">
+        <button class="adv-btn" onclick="prevAdvisory()" aria-label="Previous">&#8593;</button>
+        <button class="adv-btn" onclick="nextAdvisory()" aria-label="Next">&#8595;</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CROP ADVISORY CARDS -->
+  <section id="advisory" style="padding-top: 50px;">
+    <div class="max-w">
+      <div class="cards-grid">
+        <div class="card reveal">
+          <div class="card-img" style="background:#E8F5E9;">🌾</div>
+          <div class="card-body">
+            <span class="card-tag">Rice — Current Season</span>
+            <h3>Preparing Your Paddy Fields</h3>
+            <p>With early rains arriving in the Northern Province, begin field preparation now. Apply organic compost before first ploughing. Watch for blast fungus in low-lying areas.</p>
+          </div>
+        </div>
+        <div class="card reveal">
+          <div class="card-img" style="background:#FFF8E1;">🥜</div>
+          <div class="card-body">
+            <span class="card-tag">Groundnut — Planting Alert</span>
+            <h3>Optimal Planting Window Open</h3>
+            <p>Soil moisture levels in the Eastern Province are ideal for groundnut planting this week. Space rows at 45cm for maximum yield. Avoid waterlogged plots near river banks.</p>
+          </div>
+        </div>
+        <div class="card reveal">
+          <div class="card-img" style="background:#FCE4EC;">🍠</div>
+          <div class="card-body">
+            <span class="card-tag">Cassava — Pest Watch</span>
+            <h3>Mealybug Alert in Southern Districts</h3>
+            <p>Reports of cassava mealybug in Pujehun and Bonthe districts. Apply neem-based spray early morning. Contact your district extension officer for free pesticide allocation.</p>
+          </div>
+        </div>
+        <div class="card reveal">
+          <div class="card-img" style="background:#E3F2FD;">🌽</div>
+          <div class="card-body">
+            <span class="card-tag">Maize — Fertiliser Timing</span>
+            <h3>Top-Dress Fertiliser This Week</h3>
+            <p>Maize crops at 6-leaf stage should receive NPK top-dressing now for optimal cob development. Rain forecast for Thursday in Bo district makes this an ideal application window.</p>
+          </div>
+        </div>
+        <div class="card reveal">
+          <div class="card-img" style="background:#F3E5F5;">🫚</div>
+          <div class="card-body">
+            <span class="card-tag">Palm Oil — Harvest Tip</span>
+            <h3>Identify Ready Bunches</h3>
+            <p>Fresh fruit bunches are ready when 5–10 loose fruits fall to the base. Harvest within 10 days of ripening to maintain oil quality. Store in shaded areas before processing.</p>
+          </div>
+        </div>
+        <div class="card reveal">
+          <div class="card-img" style="background:#E0F7FA;">🍌</div>
+          <div class="card-body">
+            <span class="card-tag">Plantain — Water Management</span>
+            <h3>Mulching to Retain Soil Moisture</h3>
+            <p>During dry spells, apply 10cm thick organic mulch around plantain bases. This reduces water loss by up to 60% and suppresses weed growth without chemical herbicides.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="nav-logo">Agro<span>SL</span></div>
+        <p>Sierra Leone's national farmer advisory portal. Built to empower smallholder farmers with real-time information, weather alerts, and market data across all 16 districts.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Services</h5>
+        <ul>
+          <li><a href="advisory.html">Crop Advisory</a></li>
+          <li><a href="weather.html">Weather Alerts</a></li>
+          <li><a href="market.html">Market Prices</a></li>
+          <li><a href="tips.html">Farming Tips</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Resources</h5>
+        <ul>
+          <li><a href="register.html">Register</a></li>
+          <li><a href="contact.html">Extension Officers</a></li>
+          <li><a href="#">Training Videos</a></li>
+          <li><a href="#">Krio Resources</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>About</h5>
+        <ul>
+          <li><a href="#">Ministry of Agriculture</a></li>
+          <li><a href="#">DPG Principles</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Open Source</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 AgroSL – Sierra Leone Farmer Advisory Portal. Built with ❤️ for Sierra Leonean farmers.</p>
+      <span class="dpg-badge">🌐 Digital Public Good</span>
+    </div>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script src="main.js"></script>
+  <script>
+    // --- Today's Advisory (Signature Feature) ---
+    const advisories = [
+      {
+        title: "🌧️ Rain Alert — Northern Province",
+        body: "Heavy rainfall expected in Bombali and Tonkolili districts this Thursday. Delay fertiliser application by 2 days to prevent nutrient runoff."
+      },
+      {
+        title: "🌾 Rice Planting Season is Open",
+        body: "Optimal planting conditions across the Eastern Province. Soil temperatures above 24°C — ideal for NERICA varieties. Aim for 20kg seed per hectare."
+      },
+      {
+        title: "🐛 Fall Armyworm Detected in Bo District",
+        body: "Extension officers report Fall Armyworm on maize farms around Tikonko chiefdom. Apply chlorpyrifos early morning. Report sightings to 076-123-456."
+      },
+      {
+        title: "💰 Rice Prices Rising — Good Time to Sell",
+        body: "Local rice fetching Le 320,000 per 50kg bag at Freetown markets, up 12% from last month. Consider moving stored stock this week."
+      },
+      {
+        title: "🌱 Free Seedling Distribution — Kenema",
+        body: "The Ministry of Agriculture is distributing free cassava cuttings and groundnut seeds at Kenema Agricultural Station this Friday, 8am–2pm."
+      }
+    ];
+    let currentAdv = 0;
+    function showAdvisory(i) {
+      document.getElementById('adv-title').textContent = advisories[i].title;
+      document.getElementById('adv-body').textContent = advisories[i].body;
+    }
+    function nextAdvisory() {
+      currentAdv = (currentAdv + 1) % advisories.length;
+      showAdvisory(currentAdv);
+    }
+    function prevAdvisory() {
+      currentAdv = (currentAdv - 1 + advisories.length) % advisories.length;
+      showAdvisory(currentAdv);
+    }
+    showAdvisory(0);
+    setInterval(nextAdvisory, 6000);
+  </script>
+</body>
+</html>
